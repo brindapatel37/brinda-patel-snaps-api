@@ -13,7 +13,6 @@ function readPhotos() {
 router.get("/", (req, res) => {
   const photos = readPhotos();
   res.json(photos);
-  console.log(photos);
 });
 
 router.get("/:id", (req, res) => {
@@ -22,7 +21,6 @@ router.get("/:id", (req, res) => {
 
   if (singlePhoto) {
     res.json(singlePhoto);
-    console.log(singlePhoto);
   } else {
     res.status(404).json({ error: "Photo not found" });
   }
@@ -35,7 +33,6 @@ router.get("/:id/comments", (req, res) => {
 
   if (singlePhoto) {
     res.json(comments);
-    console.log(comments);
   } else {
     res.status(404).json({ error: "Photo not found" });
   }
@@ -56,7 +53,6 @@ router.post("/:id/comments", (req, res) => {
     singlePhoto.comments.push(newComment);
     fs.writeFileSync("./data/photos.json", JSON.stringify(photos));
     res.status(201).json(newComment);
-    console.log(newComment);
   } else {
     res.status(404).json({ error: "Comment not posted" });
   }

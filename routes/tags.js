@@ -11,7 +11,6 @@ function getTags() {
 //ROUTES
 router.get("/", (req, res) => {
   res.json(getTags());
-  console.log(getTags());
 });
 
 export default router;
